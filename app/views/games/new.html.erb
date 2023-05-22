@@ -1,0 +1,19 @@
+<div class="container">
+  <% @grid.each do |letter| %>
+    <div class="alert alert-primary" role="alert">
+      <p><%= letter %></p>
+    </div>
+  <% end %>
+</div>
+
+<p>What is the longest word that you can find?</p>
+<form action="/score" method="post" data-turbo="false">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :token, @grid %>
+  <div class="input-group">
+      <input type="text" class="form-control" id="guess" name="guess">
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-primary">Play</button>
+      </div>
+    </div>
+</form>
